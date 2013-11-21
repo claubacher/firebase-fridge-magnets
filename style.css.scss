@@ -1,0 +1,141 @@
+* { box-sizing: border-box; }
+
+body {
+  background: lightsteelblue;
+  margin-bottom: 32px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+$main: #E4DFDC;
+$darkgray: #897F7D;
+$lightgray: #AEA4A2;
+
+$fridge-width: 350px;
+$fridge-height: 566px;
+
+#fridge {
+  height: $fridge-height;
+  width: $fridge-width;
+  border-radius: 10px 10px 0 0;
+  background-color: $main;
+  position: relative;
+  box-shadow: 2px 1px $lightgray;
+  float: right;
+  margin-left: 48px;
+  margin-right: 48px;
+  overflow: hidden;
+}
+
+#freezer {
+  height: 33%;
+  border-bottom: 3px solid $lightgray;
+}
+
+/*
+ * handles
+ */
+
+#freezer:before, #fridge:before {
+  content: '';
+  position: absolute;
+  background: $lightgray;
+  width: 3%;
+  left: $fridge-width / 20;
+  box-shadow: 2px 1px $darkgray;
+}
+
+#freezer:before {
+  height: $fridge-height / 3 - 36;
+  top: 16px;
+}
+
+#fridge:before {
+  height: 40%;
+  top: $fridge-height / 3 + 14;
+}
+
+/*
+ * superfluous lighting
+ */
+
+#freezer:after, #fridge:after {
+  content: '';
+  background: transparent;
+  margin: 8px;
+  width: 20%;
+  position: absolute;
+  // z-index: -1;
+}
+
+#freezer:after {
+  border-radius: 10px 0;
+  border-top: $fridge-width / 2 - 20 solid rgba(255,255,255,0.1);
+  border-right: $fridge-width / 4 solid transparent;
+  border-bottom: $fridge-width / 2 solid transparent;
+}
+
+#fridge:after {
+  border-top: $fridge-width - 8 solid rgba(255,255,255,0.1);
+  border-right: $fridge-width / 2 solid transparent;
+  border-bottom: $fridge-width / 2 solid transparent;
+}
+
+/*
+ * magnets
+ */
+
+.magnets {
+  position: relative;
+}
+
+.magnet {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 4px;
+  margin: 4px;
+  background-color: white;
+}
+
+#draggable {
+  cursor: move;
+}
+
+/*
+ * button
+ */
+
+#poem-form {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+}
+
+#poem-form input[type=submit] {
+  font-size: 14px;
+  background: steelblue;
+  border: none;
+  border-bottom: 2px solid $lightgray;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  right: ($fridge-width + 96) / 2 - 90;
+  height: 24px;
+  width: 180px;
+  margin-top: 6px;
+}
+
+#poem-form input[type=submit]:focus {
+  border-bottom: 2px solid white;
+  outline: none;
+}
+
+#poem-form input[type=submit]:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  border-bottom: none;
+}
