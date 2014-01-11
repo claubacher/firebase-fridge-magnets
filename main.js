@@ -1,19 +1,6 @@
 $(function(){
   var myFridge = new Firebase('https://fridge-magnets.firebaseIO.com/');
 
-  // $('.magnet').each(function(i) {
-    // $(this).attr('id', i + 1);
-
-    // var magnet = {
-    //   id: parseInt($(this).attr('id')),
-    //   content: $(this).text(),
-    //   top: null,
-    //   left: null
-    // };
-
-    // myFridge.push(magnet);
-  // });
-
   myFridge.on('value', function(snapshot) {
     $('.magnet').remove();
     snapshot.forEach(function(child) {
@@ -65,13 +52,4 @@ $(function(){
       });
     }
   });
-
-  // $('.on-fridge').each(function() {
-  //   $(this).clone().appendTo($('#fridge')).css({
-  //     position: 'absolute',
-  //     top: $(this).data('top') - $('#fridge').offset().top,
-  //     left: $(this).data('left') - $('#fridge').offset().left
-  //   });
-  //   $(this).css('visibility', 'hidden');
-  // });
 });
